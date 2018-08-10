@@ -31,6 +31,8 @@ string messageParse(string str) {
 	if (arr.at(0) == "connect") {
 		cout << arr.at(1) << " has connected to the server.\n";
 		return "\e[1m[SERVER]\e[0m " + arr.at(1) + " has joined to the server.";
+	} else if (arr.at(0) == "message") {
+		return arr.at(1) + "> " + arr.at(2);
 	}
 }
 
@@ -53,6 +55,7 @@ int main()
 {
 	pthread_t msg;
 	tcp.setup(11999);
+	cout << "Server Started." << endl;
 	if( pthread_create(&msg, NULL, loop, (void *)0) == 0)
 	{
 		tcp.receive();
