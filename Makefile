@@ -4,11 +4,11 @@ CFLAGS = -c -Wall
 
 all: client server
 
-client: client-src/client.o src/TCPClient.o src/TCPServer.o
-	$(CC) -lpthread client-src/client.o src/TCPClient.o src/TCPServer.o -o client
+client: client-src/client.o src/TCPClient.o
+	$(CC) -lpthread client-src/client.o src/TCPClient.o -o client
 
-server: server-src/server.o src/TCPClient.o src/TCPServer.o
-	$(CC) -lpthread server-src/server.o src/TCPClient.o src/TCPServer.o -o server
+server: server-src/server.o src/TCPServer.o
+	$(CC) -lpthread server-src/server.o src/TCPServer.o -o server
 
 client-src/client.o: client-src/client.cpp
 	$(CC) $(CFLAGS) client-src/client.cpp -o client-src/client.o
